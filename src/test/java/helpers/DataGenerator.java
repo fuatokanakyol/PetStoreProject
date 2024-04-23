@@ -28,7 +28,6 @@ public class DataGenerator {
         JSONArray tags = new JSONArray();
         tags.add(tag);
 
-
         JSONObject json = new JSONObject();
         json.put("id", id);
         json.put("category", category);
@@ -52,7 +51,6 @@ public class DataGenerator {
         password = faker.gameOfThrones().character();
         phone = faker.phoneNumber().cellPhone();
 
-
         JSONObject json = new JSONObject();
         json.put("id", id);
         json.put("userStatus", userStatus);
@@ -62,9 +60,6 @@ public class DataGenerator {
         json.put("email", email);
         json.put("password", password);
         json.put("phone", phone);
-
-
-
 
         return json;
     }

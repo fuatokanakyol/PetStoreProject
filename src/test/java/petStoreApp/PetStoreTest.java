@@ -15,24 +15,16 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-// Tüm class için terminalde mvn test -Dtest=ConduitTest
+
 public class PetStoreTest {
-    //feature path altındaki tüm testler için
-    //mvn test -Dtest=PetStoreTest#testAll
     @Karate.Test
     Karate testAll() {
         return Karate.run().relativeTo(getClass());
-        // return Karate.run("feature").relativeTo(getClass());
-
-    }
-
-    //sadece debug taglılar için
-    // mvn test -Dtest=PetStoreTest#testDebug =>Terminalde çalıştırmak için
+        }
     @Karate.Test
     Karate testDebug() {
         return Karate.run().tags("@debug").relativeTo(getClass());
     }
-
 
     @Test
     void TestParallel(){
@@ -40,7 +32,6 @@ public class PetStoreTest {
                 .outputCucumberJson(true)
                 .parallel(3); generateReport(results.getReportDir());
                 assertTrue(results.getFailCount()==0,results.getErrorMessages());
-
 
     }
     public static void generateReport(String karateOutputPath) {
@@ -51,12 +42,4 @@ public class PetStoreTest {
         ReportBuilder reportBuilder = new ReportBuilder(jsonPaths,config);
         reportBuilder.generateReports();
     }
-
-
 }
-// mvn test -Dkarate.options="--tags @debug"   terminal için
-// mvn test -Dkarate.options="classpath:petStoreApp/feature/HomePage.feature:7"    =>spesifik bir senaryoyu çalıştırmak için yol verebilriiz
-
-
-//@ignore tagı o senaryoyu çalıştırmaz
-

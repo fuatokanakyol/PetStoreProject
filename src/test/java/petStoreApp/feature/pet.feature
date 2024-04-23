@@ -25,6 +25,7 @@ Given url apiUrl
        And request petRequestBody
        When method Post
        Then status 200
+
        Given path "/pet/" + petId
        When method Get
        Then status 200
